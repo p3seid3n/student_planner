@@ -1,0 +1,212 @@
+@import '@fontsource-variable/roboto-flex/full.css';
+
+:root {
+  --font: 'Roboto Flex Variable', 'Roboto Flex', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-emph: cubic-bezier(0.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.36, 0.64, 1);
+  --ease-decel: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-2xl: 36px;
+  --r-full: 999px;
+  --rail-w: 92px;
+  --glass: 0.7;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+  --page-pad: clamp(16px, 3.2vw, 40px);
+  --hover: color-mix(in srgb, var(--md-on-surface) 8%, transparent);
+  --press: color-mix(in srgb, var(--md-on-surface) 12%, transparent);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--md-on-surface);
+  background: var(--md-surface);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+a {
+  color: var(--md-primary);
+}
+::selection {
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+:focus-visible {
+  outline: 3px solid var(--md-secondary);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--md-on-surface) 22%, transparent) transparent;
+}
+
+/* ---------- Typography (M3 Expressive, emphasized) ---------- */
+.display-l {
+  font-size: clamp(44px, 6vw, 64px);
+  line-height: 1.02;
+  font-weight: 760;
+  font-stretch: 112%;
+  font-variation-settings: 'wdth' 118, 'opsz' 72, 'GRAD' 0;
+  letter-spacing: -0.02em;
+}
+.display-m {
+  font-size: clamp(34px, 4.6vw, 48px);
+  line-height: 1.05;
+  font-weight: 720;
+  font-variation-settings: 'wdth' 116, 'opsz' 48;
+  letter-spacing: -0.015em;
+}
+.headline-l {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 650;
+  font-variation-settings: 'wdth' 112, 'opsz' 32;
+  letter-spacing: -0.01em;
+}
+.headline-m {
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 620;
+  font-variation-settings: 'wdth' 110, 'opsz' 28;
+}
+.headline-s {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  font-variation-settings: 'wdth' 106;
+}
+.title-l {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+  font-variation-settings: 'wdth' 104;
+}
+.title-m {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+.title-s {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.body-l {
+  font-size: 16px;
+  line-height: 24px;
+}
+.body-m {
+  font-size: 14px;
+  line-height: 20px;
+}
+.body-s {
+  font-size: 12px;
+  line-height: 16px;
+}
+.label-l {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 560;
+  letter-spacing: 0.01em;
+}
+.label-m {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.label-s {
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.muted {
+  color: var(--md-on-surface-variant);
+}
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+.upper {
+  text-transform: uppercase;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+html[data-reduce-motion='true'] *,
+html[data-reduce-motion='true'] *::before,
+html[data-reduce-motion='true'] *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+
+.grow {
+  flex: 1 1 0%;
+  min-width: 0;
+}
